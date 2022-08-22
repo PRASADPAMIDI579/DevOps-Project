@@ -24,7 +24,7 @@ unzip -o mongodb.zip &>>$LOG_FILE
 
 echo "Load schema"
 cd mongodb-main
-mongo < catalouge.js &>>$LOG_FILE
+mongo < catalogue.js &>>$LOG_FILE
 mongo < users.js &>>$LOG_FILE
 
 
