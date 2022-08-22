@@ -19,7 +19,7 @@ cd /tmp/
 unzip -o catalogue.zip &>>$LOG_FILE
 
 echo "clean old catalouge"
-rm -rf /home/roboshop/catalogue
+rm -rf /home/roboshop/catalogue $>>$LOG_FILE
 
 echo "copy catalouge content"
 cp -r catalogue-main /home/roboshop/catalogue &>>$LOG_FILE
