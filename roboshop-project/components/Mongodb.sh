@@ -18,7 +18,7 @@ systemctl start mongod &>>$LOG_FILE
 echo "Download schema"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG_FILE
 
-echo "extract schema"
+echo "Extract schema"
 cd /tmp
 unzip -o mongodb.zip &>>$LOG_FILE
 
