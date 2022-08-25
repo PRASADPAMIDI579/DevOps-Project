@@ -13,3 +13,7 @@ useradd roboshop &>>$LOG_FILE
 
 echo "download catalogue code"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG_FILE
+
+echo "extract catalogue code"
+cd /tmp/
+unzip -o catalogue.zip &>>$LOG_FILE
