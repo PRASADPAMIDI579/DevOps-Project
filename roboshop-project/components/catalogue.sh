@@ -1,7 +1,6 @@
-
 #!/bin/bash
 
-source /components/common.sh
+source /components/../common.sh
 
 echo "setup NodeJS"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
