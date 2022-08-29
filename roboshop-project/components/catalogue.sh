@@ -42,3 +42,4 @@ systemctl enable catalogue &>>LOG_FILE
 systemctl start catalogue &>>LOG_FILE
 
 
+ 
