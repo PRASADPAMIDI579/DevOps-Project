@@ -12,13 +12,13 @@ if [ -z "${AMI_ID}" ]; then
     echo -e "\e[1;31mUnable to find image AMI_ID\e[0m"
     else
     echo -e "\e[1;32mAMI_ID = ${AMI_ID}\e[0m"
-    exit
 fi
 
 PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME} --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
-aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=name,Value=${INSTANCE_NAME}}]"
+
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]"
 else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence Not Creating"
     exit
