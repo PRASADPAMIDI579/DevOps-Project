@@ -14,7 +14,7 @@ if [ -z "${AMI_ID}" ]; then
     exit
 fi
 
-PRIVATE_IP=$(aws ec2 describe-instances --filters Name=instance-type,Values=${INSTANCE_TYPE} --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
+PRIVATE_IP=$(aws ec2 describe-instances --filters Name=instance-type,Values=${INSTANCE_NAME} --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
 aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=name,Value=${INSTANCE_NAME}}]"
