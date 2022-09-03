@@ -51,4 +51,4 @@ ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id
 
 aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/record.json --output text
 
-
+echo -e "\e[1m Dns Record Created\e[0m"
