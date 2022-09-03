@@ -28,6 +28,7 @@ exit
 fi
 
 aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehavior=stop,SpotInstanceType=persistent}" --security-group-ids "${SG_ID}" &>>LOG
+echo -e "[1mInstance Created\e[0m"
 else
 echo "Instance ${INSTANCE_NAME} is already exists, Hence Not Creating"
 fi
@@ -47,7 +48,6 @@ echo '{
 }}]
 }' | sed -e "s/DNSNAME/${INSTANCE_NAME}/" -e "s/IPADDRESS/${IPADDRESS}/"  >/tmp/record.json
 
-echo after json
 ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" --output text | grep roboshop.internal | awk '{print $1}' | awk -F / '{print $3}')
 
 
