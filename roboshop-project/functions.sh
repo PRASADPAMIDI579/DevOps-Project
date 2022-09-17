@@ -30,6 +30,7 @@ SAMPLE1() {
 
 echo First Argument in main progarm = $1
 SAMPLE1
+
 # 1. when you declare a variable in program, then function cannot access it and modify it
 # 2. when you declare a variable in function, then you can overwrite it in main program
 # 3. function will not access special variable inputs to given to script, only main program can access them, maeaning special varibles for inputs are different for function from main program
