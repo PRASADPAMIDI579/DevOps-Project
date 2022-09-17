@@ -16,7 +16,7 @@ STAT $?
 
 echo "Extract frontend content"
 cd /tmp
-unzip -o /frontend.zip &>>$LOG_FILE
+unzip -o frontend.zip &>>$LOG_FILE
 STAT $?
 
 echo "copy extracted content to Nginx path"
