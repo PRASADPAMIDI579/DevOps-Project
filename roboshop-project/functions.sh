@@ -10,7 +10,7 @@ a=20
 b=20
 echo "WELCOME TO DevOps Ttaining"
 echo "WELCOME TO DevOps Ttaining"
-#return 1
+return
 echo "WELCOME TO DevOps Ttaining"
 echo "WELCOME TO DevOps Ttaining"
 
@@ -34,3 +34,5 @@ SAMPLE1
 # 1. when you declare a variable in program, then function cannot access it and modify it
 # 2. when you declare a variable in function, then you can overwrite it in main program
 # 3. function will not access special variable inputs to given to script, only main program can access them, maeaning special varibles for inputs are different for function from main program
+# 4. Cases we need to come back immediately from function to main program then in that case we use return command. return command is like exit command, 
+#    where exit exists the script where as return with exits the function
