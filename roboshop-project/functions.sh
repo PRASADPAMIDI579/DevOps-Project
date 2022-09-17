@@ -9,10 +9,10 @@ SAMPLE() {
 #a=20
 #b=20
 echo "WELCOME TO DevOps Ttaining"
-#echo "WELCOME TO DevOps Ttaining"
+echo "WELCOME TO DevOps Ttaining"
 #return 1
-#echo "WELCOME TO DevOps Ttaining"
-#echo "WELCOME TO DevOps Ttaining"
+echo "WELCOME TO DevOps Ttaining"
+echo "WELCOME TO DevOps Ttaining"
 
 }
 
