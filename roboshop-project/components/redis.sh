@@ -1,4 +1,5 @@
 #/bin/bash
+source components/common.sh
 
 echo "configure redis repo"
 curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>$LOG_FILE
