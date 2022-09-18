@@ -10,9 +10,7 @@ echo "Install Nodejs"
 yum install nodejs -y &>>$LOG_FILE
 STAT $?
 
-echo "clean old content"
-rm -rf /home/roboshop/catalogue
-STAT $?
+
 
 echo "create app user"
 useradd roboshop &>>$LOG_FILE
