@@ -27,6 +27,10 @@ echo "clean old catalogue"
 rm -rf /home/roboshop/catalogue $>>$LOG_FILE
 STAT $?
 
+echo "clean old content"
+rm -rf /home/roboshop/catalogue
+STAT $?
+
 echo "copy catalogue content"
 cp -r catalogue-main /home/roboshop/catalogue &>>$LOG_FILE
 STAT $?
