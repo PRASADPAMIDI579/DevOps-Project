@@ -43,7 +43,7 @@ STAT $?
 chown roboshop:roboshop /home/roboshop/ -R &>>$LOG_FILE
 
 echo "Update SystemD file"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/SystemD.service &>>$LOG_FILE
+sed -i -e 's/MONGO_DNSNAME/roboshop.internal/' /home/roboshop/catalogue/SystemD.service &>>$LOG_FILE
 STAT $?
 
 echo "Setup Catalogue SystemD file"
