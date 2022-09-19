@@ -20,10 +20,11 @@ echo "Install Nodejs"
 yum install nodejs -y &>>$LOG_FILE
 STAT $?
 
-
-
 echo "create app user"
+id roboshop &>>LOG_FILE
+if [ $? -ne 0 ]; then
 useradd roboshop &>>$LOG_FILE
+fi
 STAT $?
 
 echo "download ${COMPONENT} code"
@@ -63,6 +64,6 @@ STAT $?
 echo "start ${COMPONENT}"
 systemctl daemon-reload &>>LOG_FILE
 systemctl enable ${COMPONENT} &>>LOG_FILE
-systemctl start ${COMPONENT} &>>LOG_FILE
+systemctl restart ${COMPONENT} &>>LOG_FILE
 STAT $?
 }
