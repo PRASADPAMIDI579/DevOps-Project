@@ -42,12 +42,12 @@ STAT $?
 
 chown roboshop:roboshop /home/roboshop/ -R &>>$LOG_FILE
 
-echo "Update Systemd file"
+echo "Update systemd file"
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>$LOG_FILE
 STAT $?
 
 echo "Setup Catalogue Systemd file"
-mv /home/roboshop/catalogue/Systemd.service /etc/systemd/system/catalogue.service &>>LOG_FILE
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>LOG_FILE
 STAT $?
 
 echo "start catalogue"
