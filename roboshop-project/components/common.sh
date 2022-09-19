@@ -23,7 +23,7 @@ STAT $?
 echo "create app user"
 id roboshop &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    useradd roboshop &>>$LOG_FILE
+useradd roboshop &>>$LOG_FILE
 fi
 STAT $?
 
