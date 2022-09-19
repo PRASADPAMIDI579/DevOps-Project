@@ -42,12 +42,12 @@ STAT $?
 
 chown roboshop:roboshop /home/roboshop/ -R &>>$LOG_FILE
 
-echo "Update SystemD file"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/user/SystemD.service &>>$LOG_FILE
+echo "Update systemd file"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/user/systemd.service &>>$LOG_FILE
 STAT $?
 
-echo "Setup user SystemD file"
-mv /home/roboshop/user/SystemD.service /etc/systemd/system/user.service &>>LOG_FILE
+echo "Setup user systemd file"
+mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service &>>LOG_FILE
 STAT $?
 
 echo "start user"
