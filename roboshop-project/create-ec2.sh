@@ -2,6 +2,11 @@
 LOG=/tmp/instance-create.log
 rm -f $LOG
 
+if [ "$1" == "list" ]; then
+    aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}" --output table
+
+fi
+
 INSTANCE_NAME=$1
 if [ -z "${INSTANCE_NAME}" ]; then
     echo -e "\e[1;33mInstance Name Argument is needed\e[0m"

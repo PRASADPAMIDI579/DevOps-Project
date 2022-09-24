@@ -61,7 +61,7 @@ echo "Setup ${COMPONENT} Systemd file"
 mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>LOG_FILE
 STAT $?
 
-echo "start ${COMPONENT}"
+echo "start ${COMPONENT} service"
 systemctl daemon-reload &>>LOG_FILE
 systemctl enable ${COMPONENT} &>>LOG_FILE
 systemctl restart ${COMPONENT} &>>LOG_FILE
