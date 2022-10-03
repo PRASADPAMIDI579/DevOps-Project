@@ -72,3 +72,10 @@ systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld &>>$LOG_FILE
 STAT $?
 
+DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Roboshop@1');"
+uninstall plugin validate_password; >/tmp/pass.sql
+mysql -uroot -p$"{DEFAULT_PASSWORD}" </tmp/pass.sql
+
+
+
