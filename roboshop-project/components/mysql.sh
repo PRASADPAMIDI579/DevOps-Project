@@ -60,12 +60,12 @@
 source components/common.sh
 
 echo "setting up mysql repo file"
-curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
+curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>$LOG_FILE
 
 echo "install mysql server"
-yum install mysql-community-server -y
+yum install mysql-community-server -y &>>$LOG_FILE
 
 echo "start mysql service"
-systemctl enable mysqld 
-systemctl start mysqld
+systemctl enable mysqld &>>$LOG_FILE
+systemctl start mysqld &>>$LOG_FILE
 
