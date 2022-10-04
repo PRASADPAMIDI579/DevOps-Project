@@ -85,7 +85,7 @@ JAVA() {
     echo "Install Maven"
     yum install maven -y
 
-    APP_USER_SETUP
+    APP_USER_SETUP_WITH_APP
 
     echo "Compile ${COMPONENT} Code"
     mvn clean package &>>$LOG_FILE
