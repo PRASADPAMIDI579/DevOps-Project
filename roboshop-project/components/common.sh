@@ -93,6 +93,7 @@ JAVA() {
     mvn clean package &>>$LOG_FILE
     mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
     STAT $?
+}
 
 PYTHON() {
     COMPONENT=$1
@@ -109,7 +110,7 @@ PYTHON() {
 
     #SYSTEMD_SETUP
 }
-}
+
 
 
 
