@@ -6,7 +6,7 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/sc
 STAT $?
 
 echo "install rabbitmq & erlang"
-yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el8.x86_64.rpm rabbitmq-server -y | sudo bash &>>$LOG_FILE
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v25.1/erlang-25.1-1.el8.x86_64.rpm rabbitmq-server -y &>>$LOG_FILE
 STAT $?
 
 echo "start rabbitmq server"
