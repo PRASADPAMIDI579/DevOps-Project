@@ -5,7 +5,7 @@ echo "Configure YUM Repos"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>$LOG_FILE
 STAT $?
 
-echo "install Rabbitmq & erlang"
+echo "install rabbitmq & erlang"
 yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v25.1/erlang-25.1-1.el8.x86_64.rpm rabbitmq-server -y &>>$LOG_FILE
 STAT $?
 
