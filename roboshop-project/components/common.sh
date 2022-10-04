@@ -10,16 +10,7 @@ else
 fi
 }
 
-NODEJS () {
-COMPONENT=$1
-echo "setup NodeJS repo"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
-STAT $?
-
-echo "Install Nodejs"
-yum install nodejs -y &>>$LOG_FILE
-STAT $?
-
+APP_USER_SETUP_WITH_APP{
 echo "create app user"
 id roboshop &>>$LOG_FILE
 if [ $? -ne 0 ]; then
@@ -36,25 +27,22 @@ cd /tmp/
 unzip -o ${COMPONENT}.zip &>>$LOG_FILE
 STAT $?
 
-echo "clean old user"
+echo "clean old ${COMPONENT}"
 rm -rf /home/roboshop/${COMPONENT} $>>$LOG_FILE
 STAT $?
-
-
 
 echo "copy ${COMPONENT}content"
 cp -r ${COMPONENT}-main /home/roboshop/${COMPONENT} &>>$LOG_FILE
 STAT $?
 
-echo "install nodejs depedendcies"
-cd /home/roboshop/${COMPONENT}
-npm install &>>$LOG_FILE
-STAT $?
+}
 
+SYSTEMD_SETUP{
 chown roboshop:roboshop /home/roboshop/ -R &>>$LOG_FILE
 
 echo "Update ${COMPONENT} systemd file"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal' -e 's/CATALOGUE_ENDPOINT/catlogue.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>$LOG_FILE
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal' 
+-e 's/CATALOGUE_ENDPOINT/catlogue.roboshop.internal/' -e 's/CARTENDPOINT/cart/roboshop.internal' -e 's/DBHOST/mysql.roboshop.internal'  /home/roboshop/${COMPONENT}/systemd.service &>>$LOG_FILE
 STAT $?
 
 echo "Setup ${COMPONENT} Systemd file"
@@ -67,3 +55,53 @@ systemctl enable ${COMPONENT} &>>LOG_FILE
 systemctl restart ${COMPONENT} &>>LOG_FILE
 STAT $?
 }
+
+
+
+NODEJS () {
+COMPONENT=$1
+echo "setup NodeJS repo"
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
+STAT $?
+
+echo "Install Nodejs"
+yum install nodejs -y &>>$LOG_FILE
+STAT $?
+
+APP_USER_SETUP_WITH_APP
+
+echo "install nodejs depedendcies"
+cd /home/roboshop/${COMPONENT}
+npm install &>>$LOG_FILE
+STAT $?
+SYSTEMD_SETUP
+
+}
+
+
+JAVA() {
+    COMPONENT=$1
+    echo "Install Maven"
+    yum install maven -y
+
+    APP_USER_SETUP_WITH_APP
+
+    echo "Compile ${COMPONENT} Code"
+    mvn clean package &>>$LOG_FILE
+    mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
+    STAT $?
+
+    SYSTEMD_SETUP
+}
+
+
+
+# 1. Update SystemD Service file 
+    
+#     Update `CARTENDPOINT` with Cart Server IP.
+    
+#     Update `DBHOST` with MySQL Server IP
+    
+# 2. Copy the service file and start the service.
+
+
