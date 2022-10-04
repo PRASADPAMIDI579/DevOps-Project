@@ -116,7 +116,7 @@ PYTHON() {
     STAT $?
 
 
-    #SYSTEMD_SETUP
+    SYSTEMD_SETUP
 }
 
 
