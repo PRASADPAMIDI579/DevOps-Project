@@ -90,6 +90,7 @@ JAVA() {
     APP_USER_SETUP_WITH_APP
 
     echo "Compile ${COMPONENT} Code"
+    cd /home/roboshop/${COMPONENT}
     mvn clean package &>>$LOG_FILE
     mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
     STAT $?
