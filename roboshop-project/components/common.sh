@@ -80,12 +80,11 @@ SYSTEMD_SETUP
 
 }
 
-
 JAVA() {
     COMPONENT=$1
      
     echo "Install Maven"
-    yum install maven -y
+    yum install maven -y &>>$LOG_FILE
 
     APP_USER_SETUP_WITH_APP
 
@@ -95,7 +94,20 @@ JAVA() {
     mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
     STAT $?
 
-    SYSTEMD_SETUP
+    PYTHON() {
+    COMPONENT=$1
+     
+    echo "Install python"
+    yum install python36 gcc python3-devel -y &>>$LOG_FILE
+
+    APP_USER_SETUP_WITH_APP
+
+    echo "install python dependencies for ${COMPONENT}"
+    cd /home/roboshop/payment 
+    pip3 install -r requirements.txt    
+    STAT $?
+
+    #SYSTEMD_SETUP
 }
 
 
