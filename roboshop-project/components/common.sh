@@ -10,7 +10,8 @@ else
 fi
 }
 
-APP_USER_SETUP_WITH_APP{
+APP_USER_SETUP_WITH_APP {
+
 echo "create app user"
 id roboshop &>>$LOG_FILE
 if [ $? -ne 0 ]; then
@@ -84,7 +85,7 @@ JAVA() {
     echo "Install Maven"
     yum install maven -y
 
-    APP_USER_SETUP_WITH_APP
+    APP_USER_SETUP
 
     echo "Compile ${COMPONENT} Code"
     mvn clean package &>>$LOG_FILE
@@ -96,12 +97,5 @@ JAVA() {
 
 
 
-# 1. Update SystemD Service file 
-    
-#     Update `CARTENDPOINT` with Cart Server IP.
-    
-#     Update `DBHOST` with MySQL Server IP
-    
-# 2. Copy the service file and start the service.
 
 
