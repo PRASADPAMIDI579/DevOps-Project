@@ -38,7 +38,7 @@ STAT $?
 
 }
 
-SYSTEMD_SETUP{
+SYSTEMD_SETUP() {
 chown roboshop:roboshop /home/roboshop/ -R &>>$LOG_FILE
 
 echo "Update ${COMPONENT} systemd file"
