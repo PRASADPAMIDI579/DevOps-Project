@@ -59,7 +59,6 @@ STAT $?
 }
 
 
-
 NODEJS () {
 COMPONENT=$1
 echo "setup NodeJS repo"
@@ -115,8 +114,7 @@ PYTHON() {
     sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini
     STAT $?
 
-
-    SYSTEMD_SETUP
+SYSTEMD_SETUP
 }
 
 
