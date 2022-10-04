@@ -10,7 +10,7 @@ else
 fi
 }
 
-APP_USER_SETUP_WITH_APP {
+APP_USER_SETUP_WITH_APP() {
 
 echo "create app user"
 id roboshop &>>$LOG_FILE
@@ -75,6 +75,7 @@ echo "install nodejs depedendcies"
 cd /home/roboshop/${COMPONENT}
 npm install &>>$LOG_FILE
 STAT $?
+
 SYSTEMD_SETUP
 
 }
@@ -82,6 +83,7 @@ SYSTEMD_SETUP
 
 JAVA() {
     COMPONENT=$1
+     
     echo "Install Maven"
     yum install maven -y
 
