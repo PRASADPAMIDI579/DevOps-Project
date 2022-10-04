@@ -100,6 +100,7 @@ PYTHON() {
      
     echo "Install python"
     yum install python36 gcc python3-devel -y &>>$LOG_FILE
+    STAT $?
 
     APP_USER_SETUP_WITH_APP
 
