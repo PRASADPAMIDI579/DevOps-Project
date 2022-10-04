@@ -108,7 +108,7 @@ PYTHON() {
     pip3 install -r requirements.txt &>>$LOG_FILE    
     STAT $?
 
-    echo"update application config"
+    echo "update application config"
     USER_ID=$(id -u roboshop)
     GROUP_ID=$(id -g roboshop)
     sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini
