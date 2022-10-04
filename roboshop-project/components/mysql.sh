@@ -1,39 +1,5 @@
 
 
-
-# 1. Start MySQL.
-
-# ```bash
-# # systemctl enable mysqld 
-# # systemctl start mysqld
-# ```
-
-# 1. Now a default root password will be generated and given in the log file.
-
-# ```bash
-# # grep temp /var/log/mysqld.log
-# ```
-
-# 1. Next, We need to change the default root password in order to start using the database service. Use password `RoboShop@1` or any other as per your choice. Rest of the options you can choose `No`
-
-# ```bash
-# # mysql_secure_installation
-# ```
-
-# 1. You can check the new password working or not using the following command in MySQL
-
-# First lets connect to MySQL
-
-# ```bash
-# # mysql -uroot -pRoboShop@1
-# ```
-
-# Once after login to MySQL prompt then run this SQL Command.
-
-# ```sql
-# > uninstall plugin validate_password;
-# ```
-
 # ## **Setup Needed for Application.**
 
 # As per the architecture diagram, MySQL is needed by
@@ -83,5 +49,15 @@ mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql &
 fi
 STAT $?
 
+echo "Download mysql shipping schema"
+curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>$LOG_FILE
+STAT $?
 
+echo "extract schema file"
+cd /tmp
+unzip -o mysql.zip &>>$LOG_FILE
+STAT $?
 
+echo "Load Schema"
+mysql -u root -pRoboShop@1 <shipping.sql &>>$LOG_FILE
+STAT $?
