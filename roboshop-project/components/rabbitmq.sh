@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
 
-echo "Configure YUM repos"
+echo "Configure YUM Repos"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>$LOG_FILE
 STAT $?
 
