@@ -105,7 +105,7 @@ PYTHON() {
 
     echo "install python dependencies for ${COMPONENT}"
     cd /home/roboshop/payment 
-    pip3 install -r requirements.txt    
+    pip3 install -r requirements.txt &>>$LOG_FILE    
     STAT $?
 
     #SYSTEMD_SETUP
