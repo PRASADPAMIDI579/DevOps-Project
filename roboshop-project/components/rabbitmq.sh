@@ -15,7 +15,11 @@ systemctl start rabbitmq-server &>>LOG_FILE
 STAT $?
 
 echo "create application user"
-rabbitmqctl add_user roboshop roboshop123
+rabbitmq list_users | grep roboshop
+if [ $? -ne 0 ]; then
+rabbitmqctl add_user roboshop roboshop123 &>>$LOG_FILE
+fi
+STAT $?
 # rabbitmqctl set_user_tags roboshop administrator
 # rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 
