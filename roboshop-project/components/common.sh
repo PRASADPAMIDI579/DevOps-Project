@@ -94,7 +94,7 @@ JAVA() {
     mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
     STAT $?
 
-    PYTHON() {
+PYTHON() {
     COMPONENT=$1
      
     echo "Install python"
@@ -108,6 +108,7 @@ JAVA() {
     STAT $?
 
     #SYSTEMD_SETUP
+}
 }
 
 
