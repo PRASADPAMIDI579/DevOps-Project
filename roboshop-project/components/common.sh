@@ -128,7 +128,7 @@ GOLANG() {
     APP_USER_SETUP_WITH_APP
 
     echo "Build GOLANG Code"
-    echo /home/roboshop/${COMPONENT} &>>$LOG_FILE
+    echo /home/roboshop/${COMPONENT} 
     go mod init dispatch &>>$LOG_FILE
     go get &>>$LOG_FILE
     go build &>>$LOG_FILE
